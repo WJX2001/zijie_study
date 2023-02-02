@@ -1,0 +1,16 @@
+#circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: royalblue;
+    line-height: 50px;
+    text-align: center;
+    color: white;
+    opacity: 1.0;
+    transition: opacity .25s;
+}
+
+#circle.fade {
+    opacity: 0.0;
+    transition: opacity .25s;
+}

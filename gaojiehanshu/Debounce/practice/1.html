@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    搜索 <input type="text" id="input1"/>
+    <script>
+        function debounce(fn, wait = 1000) {
+            var timer = null;
+
+            // 因为要将函数传进来进行防抖,所以还要return 回去一个函数
+            return function () {
+                // 如果有定时器，就将定时器清除,直到执行到fn这个函数
+                if (timer) clearTimeout(timer)
+                timer = setTimeout(() => {
+                    // 通过apply的方式改变this指向问题，来达到透传的效果
+                    // 也就是执行你所传进来的函数
+                    // 通过apply 的方法执行这个函数
+                    fn.apply(this, arguments)
+                }, wait)
+            }
+        }
+
+        
+
+        // 获取搜索框的DOM节点
+        var input1 = document.getElementById("input1")
+        input1.addEventListener('keyup', debounce(() => {
+            console.log(input1.value)
+        }))
+      
+    </script>
+</body>
+
+</html>
